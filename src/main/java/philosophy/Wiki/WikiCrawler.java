@@ -105,7 +105,7 @@ public class WikiCrawler {
             }
             this.found = entry.found;
             this.loop = entry.loop;
-            
+
             return new DbEntry(this.start, this.path, this.path.size(), this.found, this.loop);
         }
 

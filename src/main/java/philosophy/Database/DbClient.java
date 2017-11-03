@@ -35,9 +35,5 @@ public class DbClient {
 
 
         }
-//        for(String page: path) {
-//            insertDoc(page,  path.subList(path.indexOf(page), path.size() -1), found, loop);
-//        }
-
     }
 }
