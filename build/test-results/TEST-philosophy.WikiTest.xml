@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="philosophy.WikiTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2017-10-09T20:04:43" hostname="debian" time="15.732">
+  <properties/>
+  <testcase name="badUrl" classname="philosophy.WikiTest" time="1.372"/>
+  <testcase name="goodUrl" classname="philosophy.WikiTest" time="5.005"/>
+  <testcase name="loopUrl" classname="philosophy.WikiTest" time="0.737"/>
+  <testcase name="nonArticle" classname="philosophy.WikiTest" time="0.001"/>
+  <testcase name="random1" classname="philosophy.WikiTest" time="2.425"/>
+  <testcase name="random2" classname="philosophy.WikiTest" time="5.044"/>
+  <testcase name="random3" classname="philosophy.WikiTest" time="1.133"/>
+  <system-out><![CDATA[Starting Crawler Tests:
+[General_Motors, United_States, Geographic_coordinate_system, Coordinate_system, Geometry, Mathematics, Quantity, Counting, Finite_set, Mathematics][Journaling_file_system, File_system, Computing, Mathematics, Quantity, Counting, Finite_set, Mathematics]]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
