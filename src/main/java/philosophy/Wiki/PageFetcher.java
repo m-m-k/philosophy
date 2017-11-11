@@ -11,7 +11,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 @Component
-public class pageFetcher {
+public class PageFetcher {
 
     public String getPage(String page) throws IOException {
         URL url = null;

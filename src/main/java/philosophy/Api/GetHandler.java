@@ -7,7 +7,7 @@ import philosophy.Database.DbEntry;
 import philosophy.Wiki.WikiCrawler;
 
 @Component
-public class getHandler {
+public class GetHandler {
     @Autowired
     private DbClient dbClient;
 
@@ -15,10 +15,8 @@ public class getHandler {
     private WikiCrawler wikiCrawler;
 
     public Response processRequest(String page) {
-        DbEntry entry;
         wikiCrawler.crawl(page);
-        entry = dbClient.getDoc(page);
-        return new Response(page, entry.path, entry.path.size(), entry.found, entry.loop);
+        DbEntry entry = dbClient.getDoc(page);
+        return new Response(page, entry.path, entry.count, entry.found, entry.loop);
     }
-
 }

@@ -1,65 +1,27 @@
 package philosophy.Wiki;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import philosophy.Api.Response;
 import philosophy.Database.DbClient;
 import philosophy.Database.DbEntry;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class WikiCrawler {
 
     @Autowired
-    private pageFetcher fetcher;
+    private LinkStrategy linkStrategy;
 
     @Autowired
     private DbClient dbClient;
 
-    private String current;
     private String start;
     private ArrayList<String> path;
     private boolean loop = false;
     private boolean found = false;
 
-
-    private String getFirstLink(String page) {
-
-        String doc = null;
-        try {
-            doc = fetcher.getPage(page);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        }
-
-        if(doc == null) {
-            return "";
-        }
-
-        //Remove all links from inside parentheses and parse page
-        Element document = Jsoup.parse(doc.replaceAll("(<a.*?</a>)|<i>.*?</i>|<tr>[\\s\\S]*?</tr>|\\(.*?\\) ?", "$1"));
-        org.jsoup.select.Elements paragraphs = document.select("p, ul");
-
-        for (Element paragraph: paragraphs) {
-            org.jsoup.select.Elements links = paragraph.select("a[href]");
-
-            for (Element link: links) {
-                if(!link.attr("href").contains("#") && checkPage(link.attr("href").replace("/wiki/", ""))) {
-                    return link.attr("href").replace("/wiki/", "");
-                }
-
-            }
-        }
-
-        return "";
-    }
 
     private boolean checkPage(String page) {
         if(page.isEmpty()) {
@@ -116,8 +78,6 @@ public class WikiCrawler {
             return new DbEntry(this.start, this.path, this.path.size(), this.found, this.loop);
         }
 
-
-
         if(this.path.contains(page)) {
             this.loop = true;
             this.path.add(page);
@@ -126,7 +86,7 @@ public class WikiCrawler {
 
         this.path.add(page);
 
-        return findPath(getFirstLink(page));
+        return findPath(linkStrategy.getFirstLink(page));
     }
 
 }

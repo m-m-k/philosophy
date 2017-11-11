@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class RequestController {
 
     @Autowired
-    getHandler handler;
+    private GetHandler handler;
 
     @CrossOrigin(origins = "http://localhost:5000")
     @RequestMapping(value = "/api", method = RequestMethod.GET)
