@@ -66,7 +66,7 @@ public class WikiCrawler {
             return false;
         }
 
-        String [] bad = {"Wikipedia:", "Help:"};
+        String [] bad = {"Wikipedia:", "Help:", "wiktionary"};
 
         for (String item: bad) {
             if (page.contains(item)) {
