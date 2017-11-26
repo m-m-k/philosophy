@@ -66,7 +66,7 @@ public class PageUtil {
         return true;
     }
 
-    public String getNextPage(String title) {
+    public String getNextPageString(String title) {
         String doc = null;
         try {
             doc = getPageAsString(title);

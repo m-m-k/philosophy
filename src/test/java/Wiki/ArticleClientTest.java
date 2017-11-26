@@ -6,12 +6,12 @@ import philosophy.Wiki.*;
 
 import java.util.ArrayList;
 
-public class ArticleManagerTest {
+public class ArticleClientTest {
 
     @Test
     public void crawlTest () {
-        ArticleManager articleManager = new ArticleManager();
-        ArticlePath path = articleManager.getPath("Idea");
+        ArticleClient articleClient = new ArticleClient();
+        ArticlePath path = articleClient.getPath("Idea");
 
         ArrayList<String> expected = new ArrayList<>();
         expected.add("Idea");

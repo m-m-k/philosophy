@@ -8,12 +8,8 @@ public class ArticleComposite implements Article {
     private ArrayList<Article> children;
     private Article parent;
 
-    public ArticleComposite(String startTitle) {
+    public ArticleComposite() {
         this.children = new ArrayList<>();
-
-        //initialize this composite to contain the starting article
-        Article startArticle = new ArticleLeaf(startTitle);
-        add(startArticle);
     }
 
     @Override
@@ -49,4 +45,5 @@ public class ArticleComposite implements Article {
         //return starting page for ArticleComposite
         return children.get(0).getPageTitle();
     }
+
 }

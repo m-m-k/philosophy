@@ -18,7 +18,7 @@ public class ArticleLeaf implements Article {
 
     @Override
     public void add(Article article) {
-
+        //nothing to do here in leaf node
     }
 
     @Override

@@ -1,5 +1,6 @@
 package Wiki;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -10,6 +11,12 @@ import philosophy.Wiki.ArticleLeaf;
 
 public class ArticleTest {
 
+    private CommonTestObjectFactory commonTestObjectFactory;
+
+    public ArticleTest() {
+        this.commonTestObjectFactory = new CommonTestObjectFactory();
+    }
+
     @Test
     public void createArticleLeaf() {
         Article article = new ArticleLeaf("test");
@@ -18,13 +25,16 @@ public class ArticleTest {
 
     @Test
     public void createArticleComposite() {
-        Article article = new ArticleComposite("test");
-        Assert.assertEquals("test", article.getPageTitle());
+        Article articleComposite = new ArticleComposite();
+        Article article = new ArticleLeaf("test");
+        articleComposite.add(article);
+
+        Assert.assertTrue(articleComposite.getChildren().contains(article));
     }
 
     @Test
     public void addArticleLeaf() {
-        Article hello = new ArticleComposite("hello");
+        Article hello = new ArticleComposite();
         Article world = new ArticleLeaf("world");
         hello.add(world);
 
@@ -33,11 +43,12 @@ public class ArticleTest {
 
     @Test
     public void addArticleComposite() {
-        Article hello = new ArticleComposite("hello");
-        Article world = new ArticleComposite("world");
-        hello.add(world);
+        Article helloComposite = commonTestObjectFactory.createTestArticleComposite();
+        Article worldComposite = commonTestObjectFactory.createTestArticleComposite();
 
-        Assert.assertTrue(hello.getChildren().contains(world));
+        helloComposite.add(worldComposite);
+
+        Assert.assertTrue(helloComposite.getChildren().contains(worldComposite));
     }
 
 }

@@ -9,6 +9,6 @@ public class PageUtilTest {
     @Test
     public void getNextPage() {
         PageUtil pageUtil = new PageUtil();
-        Assert.assertEquals("Philosophy", pageUtil.getNextPage("Idea"));
+        Assert.assertEquals("Philosophy", pageUtil.getNextPageString("Idea"));
     }
 }
